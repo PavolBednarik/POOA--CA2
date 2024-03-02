@@ -16,6 +16,8 @@ public class Employee {
     private String email;
     private int empNum;
     private static int nextEmpNum = 1; // static field nextEmpNum
+    private String username;
+    private String password;
     
     //first constructor with default values
     public Employee() {
@@ -58,5 +60,33 @@ public class Employee {
     public static int getNextEmpNum() {
         return nextEmpNum;
     }
+    
+    // new constructor for employee with parameters username and password
+    public Employee(String name, String email, String username, String password) {
+        this.name = name;
+        this.email = email;
+        this.empNum = nextEmpNum;
+        nextEmpNum++;
+        this.username = username;
+        this.password = password;
+    }
+    
+    // getters and setters for username and password
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
     
 }

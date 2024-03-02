@@ -28,14 +28,28 @@ public class EmployeeTest {
 //            System.out.println(employee.getName()+ " " + employee.getEmail() + " " + employee.getEmpNum()) ;
 //        }
         
-        // printing number of next employee
+        // printing number of next avalible employee number
         System.out.println("Next employee number: "+ Employee.getNextEmpNum());
         
+        
+        // I set up value m on 1 so there is 2 employees after with number higher than 1
         int m =1;
         for (Employee employee :projectGroup) {
             if (employee.getEmpNum()> m) {
             System.out.println(employee.getName());
             }
         }
+        // new employee object as a manager
+        Employee manager = new Employee ("Michael Scott","ms@gmail.com","Gnomeo","smurf");
+        
+        // populating company object for testing purpouse only
+        Company company = new Company();
+            company.addNewStaff(emp1);
+            company.addNewStaff(emp2);
+            company.addNewStaff(emp3);
+            company.addNewStaff(manager);
+            
+        company.listEmployee(0);
     }
+    
 }
