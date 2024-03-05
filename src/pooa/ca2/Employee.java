@@ -4,6 +4,8 @@
  */
 package pooa.ca2;
 
+import java.util.Scanner;
+
 /**
  *
  * @author pavol
@@ -47,15 +49,35 @@ public class Employee {
         return empNum;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     //setter for email address with conditions
     public void setEmail(String email) {
-        if(email.length()<=3){
-            System.out.println("Incorrect lenght of email!");
-            // another email validation
-        }else
-            this.email = email;
+        String regex = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+          Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Enter email or 'exit' to cancel:");
+            email = sc.next();
+
+            if (email.equalsIgnoreCase("exit")) {
+                System.out.println("Exiting email input.");
+                
+                return ;
+                
+            }
+
+            if (email.length() > 3 && email.matches(regex)) {
+                this.email = email;
+                System.out.println("New employee added successfully.");
+                return;
+            } else {
+                System.out.println("Incorrect email format! Please enter a valid email.");
+            }
+        }
     }
-    
     //getter for nextEmpNum
     public static int getNextEmpNum() {
         return nextEmpNum;

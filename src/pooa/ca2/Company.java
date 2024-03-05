@@ -13,7 +13,7 @@ import java.util.Iterator;
  */
 public class Company {
     
-    private String companyName;
+    String companyName;
     ArrayList<Employee> staff = new ArrayList<>();
 
     // constructor with default value
