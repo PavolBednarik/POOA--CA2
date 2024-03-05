@@ -23,7 +23,7 @@ public class Employee {
     //first constructor with default values
     public Employee() {
         this.name = "default Name";
-        this.email = "default@Email..com";
+        this.email = "default@Email..com"; 
         this.empNum = nextEmpNum;
         nextEmpNum++; // need to increase with every new employee
     }
@@ -57,12 +57,14 @@ public class Employee {
     public void setEmail(String email) {
         // I took regex from this site https://howtodoinjava.com/java/regex/java-regex-validate-email-address/
         String regex = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        // condition for email. Email canot be 3 or less letter (with use of regex is usless but its requrement)
         if (email.length() <= 3) {
             System.out.println("Error: Email is to short!");
             return;
+        // condition for email using regex for email validation
         } else if (!email.matches(regex)) {
             System.out.println("Error: enter a valid email address! ");
-            System.out.println("Domain name must include at least one dot, and that the part of the domain name after the last dot can only consist of letters");
+            System.out.println("Domain name must include at least one dot, and that the part of the domain name after the last dot can only consist of letters!");
             return;
         } else {
             this.email = email;

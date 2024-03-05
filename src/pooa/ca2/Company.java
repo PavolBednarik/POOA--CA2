@@ -12,9 +12,9 @@ import java.util.Iterator;
  * @author pavol
  */
 public class Company {
-    
-    String companyName;
-    ArrayList<Employee> staff;
+
+    private String companyName;
+    private ArrayList<Employee> staff;
 
     // constructor with default value
     public Company() {
@@ -27,38 +27,38 @@ public class Company {
         this.companyName = companyName;
         this.staff = new ArrayList<>();
     }
-    
+
     // metod for adding new staff
-    public void addNewStaff(Employee employee){
+    public void addNewStaff(Employee employee) {
+        // adding regex to validate that if they add wrong email addres it wont be added 
         String regex = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-        if (employee.getEmail().matches(regex)){
-        staff.add(employee);
-        }else {
-            System.out.println("nod added");
+        if (employee.getEmail().matches(regex)) {
+            staff.add(employee);
+        } else {
+            System.out.println("Employee not added!");
         }
     }
-    
+
     // method what return number of employees in array 
-    public int getStaffNumber(){
+    public int getStaffNumber() {
         return staff.size();
     }
-    
+
     // method listEmployee using Iterator (netbean sugestion simple for loop )
-    public void listEmployee(int empNumValue){
-    Iterator<Employee> empIterator = staff.iterator();
-    while (empIterator.hasNext()) {
+    public void listEmployee(int empNumValue) {
+        Iterator<Employee> empIterator = staff.iterator();
+        while (empIterator.hasNext()) {
             Employee employee = empIterator.next();
-            if (employee.getEmpNum()> empNumValue) {
+            if (employee.getEmpNum() > empNumValue) {
                 System.out.println(employee.getName());
-                
+
             }
         }
     }
-public void listAllEmployee(){
+    // method used only for testing purpouse
+    public void listAllEmployee() {
         for (Employee employee : staff) {
-                System.out.println(employee.getName()+ " " +employee.getEmail()+ " " +employee.getEmpNum());
-                   }
+            System.out.println(employee.getName() + " " + employee.getEmail() + " " + employee.getEmpNum());
+        }
     }
 }
-
-
