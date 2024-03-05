@@ -18,12 +18,13 @@ public class EmployeeTest {
         Employee emp1 = new Employee("Joe Bloggs", "jb@gmail.com");
         Employee emp2 = new Employee("Ann Banana", "ab@gmail.com");
         Employee emp3 = new Employee("Tom Thumb", "tt@gmail.com");
-
+        Employee emp4 = new Employee( );
         // array project Group what store 3 employees
-        Employee[] projectGroup = new Employee[3];
+        Employee[] projectGroup = new Employee[4];
         projectGroup[0] = emp1;
         projectGroup[1] = emp2;
         projectGroup[2] = emp3;
+        projectGroup[3] = emp4;
 
         // test if employees are in array
 //        for (Employee employee : projectGroup){
@@ -48,22 +49,23 @@ public class EmployeeTest {
         company.addNewStaff(emp2);
         company.addNewStaff(emp3);
         company.addNewStaff(manager);
+        company.addNewStaff(emp4);
 
         company.listEmployee(0);
         // consol where manager can login
-        try {
+       // try {
             Scanner sc = new Scanner(System.in);
             while (true) {
                 System.out.println("1.Manager login");
                 System.out.println("2.Exit program");
 
-                int choice = sc.nextInt();
+                String choice = sc.nextLine();
 
                 switch (choice) {
-                    case 1:
+                    case "1":
                         managerLogin(manager, company);
                         break;
-                    case 2:
+                    case "2":
                         System.exit(0);
                     default:
                         System.out.println("Invalid input, please enter input from menu");
@@ -71,15 +73,15 @@ public class EmployeeTest {
 
             }
 
-        } catch (Exception e) {
-            System.out.println("Invalid input, exiting program");
-        }
+      //  } catch (Exception e) {
+          //  System.out.println("Invalid input, exiting program");
+     //   }
     }
 
     // creating manager menu
     public static void managerMenu(Employee manager, Company company) {
         // try and catch if they input not numeric value
-        try {
+       // try {
             Scanner sc = new Scanner(System.in);
             while (true) {
                 System.out.println("Manager menu");
@@ -88,36 +90,71 @@ public class EmployeeTest {
                 System.out.println("2. Add new staff");
                 System.out.println("3. Logout");
                 // using switch and scanner to get information from user
-                int choice = sc.nextInt();
+                String choice = sc.nextLine();
                 switch (choice) {
-                    case 1:
-                        company.listEmployee(0);
+                    case "1":
+                        //company.listEmployee(0);
+                        company.listAllEmployee();
                         break;
-                    case 2:
+                    case "2":
+//                       //Employee newEmployee = new Employee();
+//                       // Company company = new Company("Business Gnómes Ltd. ");
+//
+//                       //sc.nextLine();
+//                        System.out.println("Enter name");
+//                        String newname = sc.nextLine();
+//                        System.out.println("Enter email");
+//                       // newEmployee.setName(name);
+//                        String newemail = sc.nextLine();
+//                                              Employee newEmployee = new Employee(newname,newemail);
+//                       newEmployee.setName(newname);
+//                       newEmployee.setEmail(newemail);
+//                       //Employee newEmployee = new Employee(name,email);
+//                       // if (!email.isEmpty()|| !name.isEmpty()){
+//                        //    System.out.println("Employee added");
+//                      //Employee newEmployee = new Employee(name,email);
+//
+//                           company.addNewStaff(newEmployee);
+//                       // }else {
+//                            
+//                        System.out.println("Employee not added");
+//                       // }
+//                        break;
                         Employee newEmployee = new Employee();
-                        sc.nextLine();
-                        System.out.println("name");
-                        String name = sc.nextLine();
-                        System.out.println("email");
-                        newEmployee.setName(name);
-                        String email = sc.nextLine();
-                        newEmployee.setEmail(email);
-                        if (email.isEmpty()||name.isEmpty()){
-                            System.out.println("not added");
-                        }else {
-                        company.addNewStaff(newEmployee);
-                        }
-                        break;
-                    case 3:
+// Company company = new Company("Business Gnómes Ltd. ");
+
+//Scanner sc = new Scanner(System.in);
+//
+System.out.println("Enter name");
+String newname = sc.nextLine();
+
+newEmployee.setName(newname);
+
+System.out.println("Enter email");
+String newemail = sc.nextLine();
+
+newEmployee.setEmail(newemail);
+
+//if (!newemail.isEmpty() || !newname.isEmpty()) {
+//System.out.println("Employee added");
+company.addNewStaff(newEmployee);
+//} else {
+//System.out.println("Employee 2525 added");
+//}
+
+//company.addNewStaff(newEmployee);
+
+break;
+                    case "3":
                         System.out.println("Logging out see you next time ");
                         return;
                     default:
                         System.out.println("Invalid input, please enter input from menu");
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Invalid input, logging out");
-        }
+       // } catch (Exception e) {
+        //    System.out.println("Invalid input, logging out");
+        //}
     }
 
     // manager login method

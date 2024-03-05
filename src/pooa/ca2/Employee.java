@@ -12,7 +12,6 @@ import java.util.Scanner;
  */
 public class Employee {
 
-   
     // instance fields
     private String name;
     private String email;
@@ -20,14 +19,15 @@ public class Employee {
     private static int nextEmpNum = 1; // static field nextEmpNum
     private String username;
     private String password;
-    
+
     //first constructor with default values
     public Employee() {
         this.name = "default Name";
-        this.email = "defaultemail@gmail.com";
+        this.email = "default@Email..com";
         this.empNum = nextEmpNum;
         nextEmpNum++; // need to increase with every new employee
     }
+
     //second constructor with vlues passed as parameters
     public Employee(String name, String email) {
         this.name = name;
@@ -55,34 +55,26 @@ public class Employee {
 
     //setter for email address with conditions
     public void setEmail(String email) {
+        // I took regex from this site https://howtodoinjava.com/java/regex/java-regex-validate-email-address/
         String regex = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-          Scanner sc = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("Enter email or 'exit' to cancel:");
-            email = sc.next();
-
-            if (email.equalsIgnoreCase("exit")) {
-                System.out.println("Exiting email input.");
-                
-                return ;
-                
-            }
-
-            if (email.length() > 3 && email.matches(regex)) {
-                this.email = email;
-                System.out.println("New employee added successfully.");
-                return;
-            } else {
-                System.out.println("Incorrect email format! Please enter a valid email.");
-            }
+        if (email.length() <= 3) {
+            System.out.println("Error: Email is to short!");
+            return;
+        } else if (!email.matches(regex)) {
+            System.out.println("Error: enter a valid email address! ");
+            System.out.println("Domain name must include at least one dot, and that the part of the domain name after the last dot can only consist of letters");
+            return;
+        } else {
+            this.email = email;
         }
+        System.out.println("Employee added sucesfully");
     }
+
     //getter for nextEmpNum
     public static int getNextEmpNum() {
         return nextEmpNum;
     }
-    
+
     // new constructor for employee with parameters username and password
     public Employee(String name, String email, String username, String password) {
         this.name = name;
@@ -92,7 +84,7 @@ public class Employee {
         this.username = username;
         this.password = password;
     }
-    
+
     // getters and setters for username and password
     public String getPassword() {
         return password;
@@ -109,6 +101,4 @@ public class Employee {
     public void setUsername(String username) {
         this.username = username;
     }
-    
-    
 }

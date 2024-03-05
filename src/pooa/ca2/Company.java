@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class Company {
     
     String companyName;
-    ArrayList<Employee> staff = new ArrayList<>();
+    ArrayList<Employee> staff;
 
     // constructor with default value
     public Company() {
@@ -30,7 +30,12 @@ public class Company {
     
     // metod for adding new staff
     public void addNewStaff(Employee employee){
+        String regex = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        if (employee.getEmail().matches(regex)){
         staff.add(employee);
+        }else {
+            System.out.println("nod added");
+        }
     }
     
     // method what return number of employees in array 
@@ -49,4 +54,11 @@ public class Company {
             }
         }
     }
+public void listAllEmployee(){
+        for (Employee employee : staff) {
+                System.out.println(employee.getName()+ " " +employee.getEmail()+ " " +employee.getEmpNum());
+                   }
+    }
 }
+
+
