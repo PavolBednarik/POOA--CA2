@@ -55,10 +55,22 @@ public class Company {
             }
         }
     }
+
     // method used only for testing purpouse
     public void listAllEmployee() {
         for (Employee employee : staff) {
             System.out.println(employee.getName() + " " + employee.getEmail() + " " + employee.getEmpNum());
+        }
+    }
+
+    public void removeStaff(int empNum) {
+        Iterator<Employee> empIterator = staff.iterator();
+        while (empIterator.hasNext()) {
+            Employee employee = empIterator.next();
+            if (employee.getEmpNum() == empNum) {
+                empIterator.remove();
+                System.out.println("Employee removed.");
+            }
         }
     }
 }

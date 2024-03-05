@@ -79,7 +79,8 @@ public class EmployeeTest {
             System.out.println("Please enter your choice:");
             System.out.println("1. View current staff");
             System.out.println("2. Add new staff");
-            System.out.println("3. Logout");
+            System.out.println("3. Remove staff");
+            System.out.println("4. Exit menu");
             // using switch and scanner to get information from user
             String choice = sc.nextLine();
             switch (choice) {
@@ -98,6 +99,12 @@ public class EmployeeTest {
                     company.addNewStaff(newEmployee);
                     break;
                 case "3":
+                    System.out.println("Select employee by employee number to be removed");
+                    int removedStaff = sc.nextInt();
+                    company.removeStaff(removedStaff);
+                    sc.nextLine();
+                    break;
+                case "4":
                     System.out.println("Logging out see you next time ");
                     return;
                 default:
