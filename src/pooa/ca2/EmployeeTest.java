@@ -11,7 +11,8 @@ import java.util.Scanner;
  * @author pavol
  */
 public class EmployeeTest {
-
+    //https://github.com/PavolBednarik/POOA--CA2.git
+    
     public static void main(String[] args) {
 
         // creating 3 employees oject
@@ -25,15 +26,11 @@ public class EmployeeTest {
         projectGroup[1] = emp2;
         projectGroup[2] = emp3;
 
-        // test if employees are in array
-//        for (Employee employee : projectGroup){
-//            System.out.println(employee.getName()+ " " + employee.getEmail() + " " + employee.getEmpNum()) ;
-//        }
         // printing number of next avalible employee number
         System.out.println("Next employee number: " + Employee.getNextEmpNum());
 
-        // I set up value m on 1 so there is 2 employees after with number higher than 1
-        int m = 1;
+        // I set up value m on 0 so there it show all employees 
+        int m = 0;
         for (Employee employee : projectGroup) {
             if (employee.getEmpNum() > m) {
                 System.out.println(employee.getName());
@@ -41,20 +38,13 @@ public class EmployeeTest {
         }
         // new employee object as a manager
         Employee manager = new Employee("Michael Scott", "ms@gmail.com", "Gnomeo", "smurf");
-
-        // populating company object for testing purpouse only
+        // creaed new company Business Gnómes Ltd.
         Company company = new Company("Business Gnómes Ltd. ");
-        company.addNewStaff(emp1);
-        company.addNewStaff(emp2);
-        company.addNewStaff(emp3);
-        company.addNewStaff(manager);
-
-        // checking if company list is populated for testing purpouse only
-        company.listEmployee(0);
 
         // consol where manager can login
         Scanner sc = new Scanner(System.in);
         while (true) {
+            System.out.println(" ");
             System.out.println("Business Gnómes Ltd.");
             System.out.println("1.Manager login");
             System.out.println("2.Exit program");
@@ -75,6 +65,7 @@ public class EmployeeTest {
     public static void managerMenu(Employee manager, Company company) {
         Scanner sc = new Scanner(System.in);
         while (true) {
+            System.out.println(" ");
             System.out.println("Manager menu");
             System.out.println("Please enter your choice:");
             System.out.println("1. View current staff");
@@ -85,8 +76,12 @@ public class EmployeeTest {
             String choice = sc.nextLine();
             switch (choice) {
                 case "1":
-                    //company.listEmployee(0);
-                    company.listAllEmployee();// testing pourpose only
+                    if (company.getStaffNumber()==0){
+                        System.out.println("Employee list is empty");
+                    }else{
+                    company.listEmployee(0);
+                    }
+                    //company.listAllEmployee();// testing pourpose only
                     break;
                 case "2":
                     Employee newEmployee = new Employee();
@@ -99,10 +94,18 @@ public class EmployeeTest {
                     company.addNewStaff(newEmployee);
                     break;
                 case "3":
-                    System.out.println("Select employee by employee number to be removed");
-                    int removedStaff = sc.nextInt();
-                    company.removeStaff(removedStaff);
-                    sc.nextLine();
+                    while (true) {
+                        System.out.println("Select employee by employee number to be removed");
+                        if (sc.hasNextInt()) {
+                            int removedStaff = sc.nextInt();
+                            company.removeStaff(removedStaff);
+                            sc.nextLine();
+                            break;
+                        } else {
+                            System.out.println("Error: invalid input. Please enter a number.");
+                            sc.nextLine();
+                        }
+                    }
                     break;
                 case "4":
                     System.out.println("Logging out see you next time ");

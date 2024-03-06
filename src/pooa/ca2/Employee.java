@@ -48,7 +48,7 @@ public class Employee {
     public int getEmpNum() {
         return empNum;
     }
-
+    // setter for set name of employee
     public void setName(String name) {
         this.name = name;
     }

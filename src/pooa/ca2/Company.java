@@ -56,21 +56,28 @@ public class Company {
         }
     }
 
-    // method used only for testing purpouse
-    public void listAllEmployee() {
-        for (Employee employee : staff) {
-            System.out.println(employee.getName() + " " + employee.getEmail() + " " + employee.getEmpNum());
-        }
-    }
-
+//    // method used only for testing purpouse
+//    public void listAllEmployee() {
+//        for (Employee employee : staff) {
+//            System.out.println(employee.getName() + " " + employee.getEmail() + " " + employee.getEmpNum());
+//        }
+//    }
+    // method that remove staff fromm arraylist using iterator
     public void removeStaff(int empNum) {
+        //checking if employee list is empty
+        if(getStaffNumber()==0){
+            System.out.println("Employee list is empty");
+            return;
+        }
         Iterator<Employee> empIterator = staff.iterator();
         while (empIterator.hasNext()) {
             Employee employee = empIterator.next();
             if (employee.getEmpNum() == empNum) {
                 empIterator.remove();
                 System.out.println("Employee removed.");
+                return;
             }
         }
+        System.out.println("Employee not found");
     }
 }
